@@ -12,6 +12,7 @@ services:
       - ./ui:/app
     depends_on:
       - db
+      - model
     restart: always
   db:
     image: postgres:12-bullseye
@@ -20,3 +21,14 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_DB=demo
     restart: always
+  model:
+    image: model
+    build:
+      context: .
+      dockerfile: ./model/Dockerfile
+    ports:
+      - 8001:8000
+    volumes:
+      - ./model:/app
+    environment:
+      - TRANSFORMERS_CACHE=/app/.cache

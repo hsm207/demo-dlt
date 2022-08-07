@@ -1,2 +1,15 @@
 # Check that we can connect to the UI component
 GET http://127.0.0.1:8000/
+
+###
+# Check that we can connect to the model component
+GET http://127.0.0.1:8001/
+
+###
+# Get a prediction from the model component
+POST http://127.0.0.1:8001/predict
+Content-Type: application/json
+
+{
+    "text": "How much wood could a woodchuck chuck if a woodchuck could chuck wood?"
+}
