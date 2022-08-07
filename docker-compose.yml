@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  ui:
+    image: ui
+    build:
+      context: .
+      dockerfile: ./ui/Dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - ./ui:/app
