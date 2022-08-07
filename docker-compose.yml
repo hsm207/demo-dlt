@@ -10,3 +10,13 @@ services:
       - 8000:8000
     volumes:
       - ./ui:/app
+    depends_on:
+      - db
+    restart: always
+  db:
+    image: postgres:12-bullseye
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=demo
+    restart: always
